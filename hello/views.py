@@ -5,4 +5,4 @@ def myView(request):
 	context = {
         'posts': Post.objects.all() # Query datas from DB
 	}
-	return render(request, 'hello/base.html', context)
+	return render(request, 'hello/blog.html', context)

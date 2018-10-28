@@ -22,7 +22,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav mr-auto">
-              <a class="nav-item nav-link" href="/">Home</a>
+              <a class="nav-item nav-link" href="/">Home       </a>
               <a class="nav-item nav-link" href="/">About</a>
             </div>
             <!-- Navbar Right Side -->
@@ -37,18 +37,14 @@
     <main role="main" class="container">
       <div class="row">
         <div class="col-md-8">
-          {% for post in posts %}
-            <article class="media content-section">
-              <div class="media-body">
-                <div class="article-metadata">
-                  <a class="mr-2" href="#">{{ post.author }}</a>
-                  <small class="text-muted">{{ post.date_posted|date:'F d, Y' }}</small>
-                </div>
-                <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
-                <p class="article-content">{{ post.content }}</p>
-              </div>
-            </article>
-          {% endfor %}
+          {% if messages %}
+            {% for message in message %}
+              <dir class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </dir>
+            {% endfor %}
+          {% endif %}
+          {% block content %}{% endblock %}
         </div>
         <div class="col-md-4">
           <div class="content-section">
